@@ -43,13 +43,14 @@ export const App = () => {
   const visibleGoods = [...goodsFromServer].sort((good1, good2) => {
     switch (sortField) {
       case 'length':
-        return good1.id - good2.id;
+        console.log('lenght', sortField);
+        return good1.length - good2.length;
       case 'name':
-        return good1.name.localeCompare(good2.name);
+        return good1.localeCompare(good2);
       case 'reverse':
-        return good1.color.localeCompare(good2.color);
+
       case 'reset':
-        return good1.color.localeCompare(good2.color);
+
       default:
         return 0;
     }
@@ -58,15 +59,13 @@ export const App = () => {
   return (
     <div className="section content">
       <div className="buttons">
-        <button type="button" className="button is-light">
-          Sort alphabetically
-        </button>
-
         {buttons.map(butt => (
           <button
             type="button"
             key={butt.id}
-            className={classNames( butt.class, 'button is-light', { active: sortField === butt.id })}
+            className={classNames(butt.class, {
+              'is-light': sortField !== butt.id,
+            })}
             onClick={() => setSortField(butt.id)}
           >
             {butt.value}
