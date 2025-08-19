@@ -43,7 +43,7 @@ export const App = () => {
   const visibleGoods = [...goodsFromServer].sort((good1, good2) => {
     switch (sortField) {
       case 'length':
-        console.log('lenght', sortField);
+
         return good1.length - good2.length;
       case 'name':
         return good1.localeCompare(good2);
@@ -51,8 +51,6 @@ export const App = () => {
 
       case 'reset':
 
-      default:
-        return 0;
     }
   });
 
